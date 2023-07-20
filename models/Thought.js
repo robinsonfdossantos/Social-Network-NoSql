@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const reactionSchema = require('./Reaction');
 const { Schema, model } = mongoose;
 
 const thoughtSchema = new Schema(
@@ -12,34 +13,13 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (timestamp) => formatDate(timestamp),
+      //get: (timestamp) => formatDate(timestamp),
     },
     username: {
       type: String,
       required: true,
     },
-    reactions: [
-      {
-        reactionId: {
-          type: Schema.Types.ObjectId,
-          default: () => new Types.ObjectId(),
-        },
-        reactionBody: {
-          type: String,
-          required: true,
-          maxlength: 280,
-        },
-        username: {
-          type: String,
-          required: true,
-        },
-        createdAt: {
-          type: Date,
-          default: Date.now,
-          get: (timestamp) => formatDate(timestamp),
-        },
-      },
-    ],
+    reactions: [reactionSchema],
   },
   {
     toJSON: {

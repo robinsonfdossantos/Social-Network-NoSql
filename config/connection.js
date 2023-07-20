@@ -6,3 +6,4 @@ const connectionString =
 connect(connectionString);
 
 module.exports = connection;
+

@@ -12,9 +12,9 @@ mongoose.connect('mongodb://localhost:27017/socialnetworkDB', {
 const seedData = [
   {
     username: 'lernantino',
+    thoughtText: "That is the lernantino thoughts",
     email: 'lernantino@gmail.com',
-    thoughts: [],
-    friends: [],
+    createdAt: 'Jun 9th, 2023 at 10:10 pm'
   },
   {
     username: 'codingguru',
@@ -22,7 +22,6 @@ const seedData = [
     thoughts: [],
     friends: [],
   },
-  // Add more user objects as needed
 ];
 
 // Function to generate sample thoughts

@@ -6,7 +6,7 @@ module.exports = {
   // Get all users
   async getAllUsers(req, res) {
     try {
-      const users = await User.find();
+      const users = await User.find().populate('thoughts');
 
       res.json({
         users,
@@ -22,9 +22,8 @@ module.exports = {
     try {
       const { userId } = req.params;
 
-      const user = await User.findById(userId)
-        .populate('thoughts')
-        .populate('friends');
+      const user = await User.findOne({ _id: req.params.userId })
+      .select('-__v').populate('thoughts');
 
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
@@ -38,6 +37,7 @@ module.exports = {
       res.status(500).json({ message: 'Internal Server Error' });
     }
   },
+
 
   // Create a new user
   async createUser(req, res) {

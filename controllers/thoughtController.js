@@ -5,7 +5,11 @@ const thoughtController = {
   async getAllThoughts(req, res) {
     try {
       const thoughts = await Thought.find();
-      res.json(thoughts);
+
+      res.json({
+        thoughts,
+      });
+
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: 'Internal Server Error' });
@@ -15,11 +19,18 @@ const thoughtController = {
   // Get a single thought by its _id
   async getThoughtById(req, res) {
     try {
-      const thought = await Thought.findById(req.params.thoughtId);
+      const { thoughtId } = req.params;
+
+      const thought = await Thought.findOne({ _id: req.params.thoughtId })
+      .select('-__v');
+      
       if (!thought) {
         return res.status(404).json({ message: 'Thought not found' });
       }
-      res.json(thought);
+
+      res.json({
+        thought,
+      });
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: 'Internal Server Error' });
