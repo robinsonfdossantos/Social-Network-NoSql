@@ -9,7 +9,6 @@
   - [Usage](#usage)
   - [License](#license)
   - [Contributing](#contributing)
-  - [Tests](#tests)
   - [Questions](#questions)
   
   ## Installation
@@ -52,9 +51,6 @@
   
   ## Contributing
   All users are very welcome to leave their comments and suggestions for improvement by sending me a direct message or creating pull requests on Github.
-  
-  ## Tests
-  Provide test procedures.
   
   ## Questions
   For any questions or inquiries, please reach out to me via [GitHub](https://github.com/robinsonfdossantos) or email me at robinsonfdossantos@gmail.com.
